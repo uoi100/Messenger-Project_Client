@@ -21,6 +21,7 @@ namespace Server
 
     class SynchronousServer
     {
+        private IPAddress ipAddress;
         public string data = null;
 
         public void startListening()
@@ -28,12 +29,10 @@ namespace Server
             // Data buffer for incoming data.
             byte[] bytes = new Byte[1024];
 
-            byte[] ip = { 142, 232, 49, 157 };
             // Establish the local endpoint for the socket.
             // Dns.GetHostName returns the name of the
             // host running the application.
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddress = new IPAddress(ip);
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
 
             Console.WriteLine(ipAddress.ToString());
@@ -84,5 +83,12 @@ namespace Server
             Console.WriteLine("\nPress ENTER to continue...");
             Console.Read();
         }
+
+        public void setIP(byte[] ip)
+        {
+            ipAddress = new IPAddress(ip);
+        }
+
+        // End Class
     }
 }

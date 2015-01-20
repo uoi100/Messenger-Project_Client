@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 
 namespace Server
@@ -25,9 +26,24 @@ namespace Server
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Description: Start the server when clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Server_Click(object sender, EventArgs e)
         {
-            server.startListening();
+            string[] ipaddress = text_IPAddress.Text.Split('.');
+
+            byte[] ipaddressv4 = new byte[4];
+
+            for(int i = 0; i < 4; i++)
+                ipaddressv4[i] = byte.Parse(ipaddress[i]);
+
+            server.setIP(ipaddressv4);
+            
+            Thread thread = new Thread( () => server.startListening());
+            thread.Start();
         }
     }
 }
