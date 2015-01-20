@@ -28,15 +28,15 @@ namespace Server
             // Data buffer for incoming data.
             byte[] bytes = new Byte[1024];
 
+            byte[] ip = { 142, 232, 49, 157 };
             // Establish the local endpoint for the socket.
             // Dns.GetHostName returns the name of the
             // host running the application.
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddress = ipHostInfo.AddressList[0];
+            IPAddress ipAddress = new IPAddress(ip);
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
 
-            Console.WriteLine("Address: {0}", ipAddress.AddressFamily.ToString());
-
+            Console.WriteLine(ipAddress.ToString());
             // Create a TCP/IP Socket.
             Socket listener = new Socket(ipAddress.AddressFamily,
                 SocketType.Stream, ProtocolType.Tcp);

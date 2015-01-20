@@ -48,7 +48,7 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.btn_Server);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Server Window";
             this.ResumeLayout(false);
 
         }

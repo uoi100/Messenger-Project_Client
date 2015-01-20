@@ -20,13 +20,14 @@ namespace Client
             // Data buffer for incoming data.
             byte[] bytes = new byte[1024];
 
+            byte[] ip = {142,232,49,157};
             // Connect to a remote device.
             try
             {
                 // Establish the remote endpoint for the socket
                 // This example uses port 11000 on the local computer.
                 IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-                IPAddress ipAddress = ipHostInfo.AddressList[0];
+                IPAddress ipAddress = new IPAddress(ip);
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
 
                 // Create a TCP/IP socket.
