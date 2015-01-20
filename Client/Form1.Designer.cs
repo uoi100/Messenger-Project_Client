@@ -30,6 +30,7 @@
         {
             this.btn_Start = new System.Windows.Forms.Button();
             this.text_msg = new System.Windows.Forms.TextBox();
+            this.text_IPAddress = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btn_Start
@@ -50,11 +51,20 @@
             this.text_msg.TabIndex = 1;
             this.text_msg.Text = "Send Message";
             // 
+            // text_IPAddress
+            // 
+            this.text_IPAddress.Location = new System.Drawing.Point(76, 213);
+            this.text_IPAddress.Name = "text_IPAddress";
+            this.text_IPAddress.Size = new System.Drawing.Size(100, 20);
+            this.text_IPAddress.TabIndex = 2;
+            this.text_IPAddress.Text = "127.0.0.1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.text_IPAddress);
             this.Controls.Add(this.text_msg);
             this.Controls.Add(this.btn_Start);
             this.Name = "Form1";
@@ -68,6 +78,7 @@
 
         private System.Windows.Forms.Button btn_Start;
         private System.Windows.Forms.TextBox text_msg;
+        private System.Windows.Forms.TextBox text_IPAddress;
     }
 }
 

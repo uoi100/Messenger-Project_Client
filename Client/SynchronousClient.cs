@@ -7,6 +7,7 @@ namespace Client
 {
     class SynchronousClient
     {
+        private IPAddress ipAddress;
         private string message;
         /// <summary>
         /// Description: The client is built with a synchronous socket,
@@ -21,14 +22,12 @@ namespace Client
             // Data buffer for incoming data.
             byte[] bytes = new byte[1024];
 
-            byte[] ip = {142,232,49,157};
             // Connect to a remote device.
             try
             {
                 // Establish the remote endpoint for the socket
                 // This example uses port 11000 on the local computer.
                 IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-                IPAddress ipAddress = new IPAddress(ip);
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
 
                 // Create a TCP/IP socket.
@@ -78,6 +77,11 @@ namespace Client
         public void setMessage(string message)
         {
             this.message = message + "<EOF>";
+        }
+
+        public void setIPAddress(byte[] ip)
+        {
+            ipAddress = new IPAddress(ip);
         }
 
         // End of Class

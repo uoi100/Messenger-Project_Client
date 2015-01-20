@@ -26,8 +26,21 @@ namespace Client
 
         private void btn_Start_Click(object sender, EventArgs e)
         {
+            setIP();
             client.setMessage(text_msg.Text);
             client.startClient();
+        }
+
+        private void setIP()
+        {
+            string[] ip = text_IPAddress.Text.Split('.');
+            byte[] bytes = new byte[4];
+
+            for (int i = 0; i < 4; i++)
+            {
+                bytes[i] = byte.Parse(ip[i]);
+            }
+            client.setIPAddress(bytes);
         }
     }
 }
