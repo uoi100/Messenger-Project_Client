@@ -7,6 +7,7 @@ namespace Client
 {
     class SynchronousClient
     {
+        private string message;
         /// <summary>
         /// Description: The client is built with a synchronous socket,
         /// so the execution of the client application is suspended until the
@@ -42,7 +43,7 @@ namespace Client
                     Console.WriteLine("Socket connected to {0}", sender.RemoteEndPoint.ToString());
 
                     // Encode the data string into a byte array.
-                    byte[] msg = Encoding.ASCII.GetBytes("This is a test<EOF>");
+                    byte[] msg = Encoding.ASCII.GetBytes(message);
 
                     // Send the data through the socket.
                     int bytesSent = sender.Send(msg);
@@ -74,6 +75,10 @@ namespace Client
             }
         }
 
+        public void setMessage(string message)
+        {
+            this.message = message + "<EOF>";
+        }
 
         // End of Class
     }

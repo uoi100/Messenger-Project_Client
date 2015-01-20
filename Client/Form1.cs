@@ -26,6 +26,7 @@ namespace Client
 
         private void btn_Start_Click(object sender, EventArgs e)
         {
+            client.setMessage(text_msg.Text);
             client.startClient();
         }
     }

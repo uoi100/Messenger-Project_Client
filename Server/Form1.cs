@@ -20,8 +20,10 @@ namespace Server
     public partial class Form1 : Form
     {
         private SynchronousServer server;
+        private Thread thread;
         public Form1()
         {
+            thread = new Thread(() => server.startListening());
             server = new SynchronousServer();
             InitializeComponent();
         }
@@ -43,9 +45,25 @@ namespace Server
                 ipaddressv4[i] = byte.Parse(ipaddress[i]);
 
             server.setIP(ipaddressv4);
-            
-            Thread thread = new Thread( () => server.startListening());
-            thread.Start();
+
+            if (!thread.IsAlive)
+            {
+                thread = new Thread(() => server.startListening());
+                thread.Start();
+            }
         }
+
+        /// <summary>
+        /// Description: Stops the server
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_stopServer_Click(object sender, EventArgs e)
+        {
+            server.stop();
+            thread.Join();
+        }
+
+
     }
 }
