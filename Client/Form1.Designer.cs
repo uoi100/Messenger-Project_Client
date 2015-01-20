@@ -37,7 +37,7 @@
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(75, 23);
             this.btn_Start.TabIndex = 0;
-            this.btn_Start.Text = "Start";
+            this.btn_Start.Text = "Start Client";
             this.btn_Start.UseVisualStyleBackColor = true;
             this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
             // 

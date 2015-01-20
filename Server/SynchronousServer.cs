@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 
+
 namespace Server
 {
     /// <summary>
@@ -16,12 +17,14 @@ namespace Server
     /// echoes the string back to the client. The string from the client must
     /// contain the string "<EOF>" to signal the end of the message
     /// </summary>
+    /// 
+
     class SynchronousServer
     {
         public string data = null;
 
         public void startListening()
-        { 
+        {
             // Data buffer for incoming data.
             byte[] bytes = new Byte[1024];
 

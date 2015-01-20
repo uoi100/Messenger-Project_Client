@@ -10,6 +10,11 @@ using System.Windows.Forms;
 
 namespace Client
 {
+
+    /// <summary>
+    /// Front-End Controller for the synchronous class,
+    /// results are printed in the console.
+    /// </summary>
     public partial class Form1 : Form
     {
         private SynchronousClient client;

@@ -8,8 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Server
 {
+
+    /// <summary>
+    /// Description: Front-end controller of the synchronous server. Results are printed in the
+    /// console.
+    /// </summary>
     public partial class Form1 : Form
     {
         private SynchronousServer server;
