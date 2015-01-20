@@ -12,9 +12,16 @@ namespace Server
 {
     public partial class Form1 : Form
     {
+        private SynchronousServer server;
         public Form1()
         {
+            server = new SynchronousServer();
             InitializeComponent();
+        }
+
+        private void btn_Server_Click(object sender, EventArgs e)
+        {
+            server.startListening();
         }
     }
 }
