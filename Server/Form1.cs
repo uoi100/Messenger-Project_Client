@@ -27,7 +27,9 @@ namespace Server
         }
 
         /// <summary>
-        /// Description: Start the server when clicked
+        /// Description: Start the server when clicked, the server is listening on a 
+        /// separate thread so that you can still interact with the server form without it
+        /// hanging due to the server listening to the socket.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
