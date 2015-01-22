@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.Collections;
 
 namespace Client
 {
@@ -41,6 +43,22 @@ namespace Client
                 bytes[i] = byte.Parse(ip[i]);
             }
             client.setIPAddress(bytes);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ArrayList addressList = new ArrayList();
+            Thread thread = new Thread(() => { addressList = client.checkLan(); });
+
+            thread.Start();
+            thread.Join(1000);
+
+            for (int i = 0; i < addressList.Count; i++)
+            {
+                string ipAddress = (string) addressList[i];
+                Console.WriteLine(ipAddress);
+            }
+
         }
     }
 }
