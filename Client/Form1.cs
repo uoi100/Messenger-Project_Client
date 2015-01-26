@@ -47,18 +47,33 @@ namespace Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ArrayList addressList = new ArrayList();
-            Thread thread = new Thread(() => { addressList = client.checkLan(); });
+            Thread thread = new Thread(() => client.checkLan(this));
 
             thread.Start();
-            thread.Join(1000);
+        }
 
-            for (int i = 0; i < addressList.Count; i++)
+        delegate void setCallBack(ArrayList list);
+
+        public void updateList(ArrayList addressList)
+        {
+            if (this.listBox1.InvokeRequired)
             {
-                string ipAddress = (string) addressList[i];
-                Console.WriteLine(ipAddress);
+                setCallBack d = new setCallBack(updateList);
+                this.Invoke(d, new object[] { addressList });
             }
+            else
+            {
+                Console.WriteLine(" Printing List... ");
 
+                for (int i = 0; i < addressList.Count; i++)
+                {
+                    string ipAddress = (string)addressList[i];
+                    Console.WriteLine(ipAddress);
+                    listBox1.Items.Add(ipAddress);
+                }
+
+                Console.WriteLine(" End Printing List... ");
+            }
         }
     }
 }
